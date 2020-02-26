@@ -63,7 +63,6 @@ def password_leak_count(response, hash_tail):
 		return 'Congratulations! Your password is still secure'
 
 def gen_hash(password):
-	print('************************* password in gen_hash:', password)
 	hashkey = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
 	hash_tail = hashkey[5:]
 	response = req_api_data(hashkey[:5])
@@ -74,7 +73,6 @@ def password_hack():
 	if request.method == 'POST':
 		try:
 			password = request.form.to_dict()
-			print(password)
 			return gen_hash(password['password'])
 		except:
 			return 'password not entered'
