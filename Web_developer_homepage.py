@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect # to set debug mode ON, type in command line "set FLASK_ENV=development"
 import csv
 from password_hack import gen_hash
+from custom_hackernews import cust_hackernews
 
 app = Flask(__name__)
 
@@ -55,3 +56,15 @@ def password_hack():
 			return 'password not entered'
 	else:
 		return 'Something went wrong. Please try again!'
+
+@app.route('/hacker_news', methods=['POST', 'GET'])
+def hacker_news():
+	if request.method == 'POST':
+		try:
+			vote_count = request.form.to_dict()
+			return cust_hackernews(vote_count['vote_count'])
+		except:
+			return 'Please enter vote count for your reading pleasure'
+	else:
+		return 'Something went wrong. Please try again!'
+
