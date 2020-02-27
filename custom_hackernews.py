@@ -61,11 +61,12 @@ def ceate_custhm(links, votes, vote_points):
 
 	hm = sorted(hm, key = lambda k:k['votes'], reverse=True)
 
-	return pprint.pprint(hm[:11])
+	return hm
+#	return pprint.pprint(hm)
 
 def cust_hackernews(vote_points):
 	website = 'https://news.ycombinator.com/'
 	links, subtexts = scrape_web(website)
 	links, votes = inspect_votes(links, subtexts)
-	ceate_custhm(links, votes, vote_points)
+	return ceate_custhm(links, votes, vote_points)
 

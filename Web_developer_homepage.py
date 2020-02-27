@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect # to set de
 import csv
 from password_hack import gen_hash
 from custom_hackernews import cust_hackernews
+from generate_news import generate_news
 from password_validation import password_check
 
 app = Flask(__name__)
@@ -63,7 +64,8 @@ def hacker_news():
 	if request.method == 'POST':
 		try:
 			vote_count = request.form.to_dict()
-			return cust_hackernews(vote_count['vote_count'])
+			generate_news(cust_hackernews(vote_count['vote_count']))
+			return redirect('/cust_news.html')
 		except:
 			return 'Please enter vote count for your reading pleasure'
 	else:
