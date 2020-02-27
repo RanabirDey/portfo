@@ -61,7 +61,7 @@ def ceate_custhm(links, votes, vote_points):
 
 	hm = sorted(hm, key = lambda k:k['votes'], reverse=True)
 
-	return pprint.pprint(hm)
+	return pprint.pprint(hm[:11])
 
 def cust_hackernews(vote_points):
 	website = 'https://news.ycombinator.com/'

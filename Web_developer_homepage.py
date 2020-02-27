@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect # to set de
 import csv
 from password_hack import gen_hash
 from custom_hackernews import cust_hackernews
+from password_validation import password_check
 
 app = Flask(__name__)
 
@@ -68,3 +69,13 @@ def hacker_news():
 	else:
 		return 'Something went wrong. Please try again!'
 
+@app.route('/password_validation', methods=['POST', 'GET'])
+def password_validation():
+	if request.method == 'POST':
+		try:
+			password = request.form.to_dict()
+			return password_check(password['password'])
+		except:
+			return 'Please re-enter your new password for validation'
+	else:
+		return 'Something went wrong. Please try again!'
