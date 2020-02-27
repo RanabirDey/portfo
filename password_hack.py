@@ -1,5 +1,8 @@
 # Password_hack_check
 
+import requests as req
+import hashlib
+
 def req_api_data(hashkey):
 	url = 'https://api.pwnedpasswords.com/range/' + hashkey
 	res = req.get(url)

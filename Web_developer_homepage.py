@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect # to set debug mode ON, type in command line "set FLASK_ENV=development"
 import csv
-import requests as req
-import hashlib
 from password_hack import gen_hash
 
 app = Flask(__name__)
