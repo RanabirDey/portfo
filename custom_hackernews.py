@@ -56,11 +56,10 @@ def ceate_custhm(links, votes, vote_points):
 		title = item["link"].getText()
 		href = item["link"].get('href', None)
 		points = int(votes[indx].replace(' points',''))
-		if points > vote_points:
+		if points > int(vote_points):
 			hm.append({"title": title, "link": href, "votes": points, "page_number": item["page_count"]})
 
 	hm = sorted(hm, key = lambda k:k['votes'], reverse=True)
-
 	return hm
 #	return pprint.pprint(hm)
 

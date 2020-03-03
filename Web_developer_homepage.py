@@ -4,6 +4,7 @@ from password_hack import gen_hash
 from custom_hackernews import cust_hackernews
 from generate_news import generate_news
 from password_validation import password_check
+import sys
 
 app = Flask(__name__)
 
@@ -13,7 +14,7 @@ def home_page():
 
 @app.route('/<string:page_name>')
 def web_pages(page_name):
-    return render_template(page_name)
+	return render_template(page_name)
 
 @app.route('/thankyou/<name>')
 def thankyou_page(name):
@@ -67,7 +68,8 @@ def hacker_news():
 			generate_news(cust_hackernews(vote_count['vote_count']))
 			return redirect('/cust_news.html')
 		except:
-			return 'Please enter vote count for your reading pleasure'
+			e = sys.exc_info()
+			return f'Error = {e}'
 	else:
 		return 'Something went wrong. Please try again!'
 

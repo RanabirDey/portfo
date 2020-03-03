@@ -32,10 +32,12 @@ def merge_temp_files():
 	with open ('.//templates//cust_news.html', 'w') as cnews: 
 	    cnews.write(tot_data) 
 
+	cnews.close()
+
 
 def generate_news(newslist):
 	try:
-		out_file = open('.//templates//temp_news_files//body.html',"w")
+		out_file = open('.//templates//temp_news_files//body.html',"w",encoding='utf-8')
 	except IOError as FOerr:
 		print('File Open error', FOerr)
 	else:
