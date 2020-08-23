@@ -27,7 +27,7 @@ def write_to_txtdb(data):
 		email = data['email']
 		subject = data['subject']
 		message = data['message']
-		file = text_db.write(f'\n{name},{email},{subject},{message}')
+		file = text_db.write(f"\n{name},{email},{subject},{message}")
 
 def write_to_csvdb(data):
 	with open('database.csv', newline='', mode='a') as csv_db:
