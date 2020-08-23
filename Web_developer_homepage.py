@@ -21,13 +21,13 @@ def web_pages(page_name):
 def thankyou_page(name):
     return render_template('thankyou.html',name=name)
 
-def write_to_txtdb(data):
-	with open('database.txt', mode='a') as text_db:
-		name = data['name']
-		email = data['email']
-		subject = data['subject']
-		message = data['message']
-		file = text_db.write(f"\n{name},{email},{subject},{message}")
+#def write_to_txtdb(data):
+#	with open('database.txt', mode='a') as text_db:
+#		name = data['name']
+#		email = data['email']
+#		subject = data['subject']
+#		message = data['message']
+#		file = text_db.write(f"\n{name},{email},{subject},{message}")
 
 def write_to_csvdb(data):
 	with open('database.csv', newline='', mode='a') as csv_db:
