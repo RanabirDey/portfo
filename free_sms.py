@@ -1,12 +1,13 @@
 # Download the helper library from https://www.twilio.com/docs/python/install
 from twilio.rest import Client # pip3 install twilio
+import os
 
 
 # Your Account Sid and Auth Token from twilio.com/console
 # DANGER! This is insecure. See http://twil.io/secure
 def free_sms(to_num, message):
-	account_sid = 'AC52b7fd8a233b1de41723648a583964b3'
-	auth_token = 'e167a0df16bc679163489cdd9a8e38e5'
+	account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
+	auth_token  = os.environ.get('TWILIO_AUTH_TOKEN')
 	client = Client(account_sid, auth_token)
 
 	message = client.messages \
