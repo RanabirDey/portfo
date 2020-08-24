@@ -73,7 +73,8 @@ def hacker_news():
 			return redirect('/cust_news.html')
 		except:
 			e = sys.exc_info()
-			return f'Error = {e}'
+			ret_msg = 'Error = ' + e
+			return ret_msg
 	else:
 		return 'Something went wrong. Please try again!'
 
