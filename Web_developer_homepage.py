@@ -46,7 +46,8 @@ def submit_form():
 			write_to_csvdb(data)
 			return redirect(url_for('thankyou_page', name=data['name']))
 		except Exception as error:
-			return f'Error {error} occurred. data not saved in database'
+			ret_msg = 'Data not saved in database. Error = ' + error
+			return ret_msg
 	else:
 		return 'Something went wrong. Please try again!'
 
@@ -57,7 +58,8 @@ def password_hack():
 			password = request.form.to_dict()
 			return gen_hash(password['password'])
 		except Exception as error:
-			return f'Error {error} occurred. password not entered'
+			ret_msg = 'Error occurred while checking password. Error = ' + error
+			return ret_msg
 	else:
 		return 'Something went wrong. Please try again!'
 
@@ -83,7 +85,8 @@ def send_sms():
 			print('*** Recipient number and message:', num_text)
 			return free_sms(num_text['to_num'], num_text['message'])
 		except Exception as error:
-			return f'Error {error} occurred. Please re-enter your message and recepient number'
+			ret_msg = 'Error occurred. Please re-enter your message and recepient number. Error = ' + error
+			return ret_msg
 	else:
 		return 'Something went wrong. Please try again!'
 
@@ -94,6 +97,7 @@ def password_validation():
 			password = request.form.to_dict()
 			return password_check(password['password'])
 		except Exception as error:
-			return f'Error {error} occurred. Please re-enter your new password for validation'
+			ret_msg = 'Error occurred. Please re-enter your new password for validation. Error = ' + error
+			return ret_msg
 	else:
 		return 'Something went wrong. Please try again!'
