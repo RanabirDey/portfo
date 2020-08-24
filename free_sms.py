@@ -18,5 +18,6 @@ def free_sms(to_num, message):
 	                     to=to_num
 	                 )
 
-	return f"Your msg is in process, current status: {message.status}"
+	ret_msg = 'Your msg request is in process, current status: ' + message.status
+	return ret_msg
 
