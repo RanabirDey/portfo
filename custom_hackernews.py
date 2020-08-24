@@ -26,7 +26,8 @@ def scrape_web(weblink):
 			next_weblink = weblink + '?p=' + page_cnt_str
 			res = requests.get(next_weblink)
 	else:
-		return f'improper response : {res}'
+		ret_msg = 'improper response : ' + res
+		return ret_msg
 	
 	return all_page_links, all_page_subtexts
 
